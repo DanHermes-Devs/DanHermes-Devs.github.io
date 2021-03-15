@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="prism.css">
+    <title>Title</title>
+</head>
+<style>
+    body {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        text-align: center;
+        list-style: none;
+        font-family: helvetica, arial, serif;
+        margin: 30px 0;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    :not(pre)>code[class*="language-"],
+    pre[class*="language-"] {
+        background-color: black;
+    }
+
+    code[class*="language-"],
+    pre[class*="language-"] {
+        font-size: 20px;
+    }
+
+    li {
+        font-size: 30px;
+    }
+</style>
+
+<body>
+
+<!-- Instalando Composer -->
+<li>Instalando Composer</li>
+<pre>
+<code class="language-shell">
+#Para instalar composer sera necesario tener instalado chocolatey, para ello seguir las
+#instrucciones en la siguiente url: https://chocolatey.org/install
+
+#Para instalar Composer, una vez teniendo instalado Chocolatey, se hara uso del 
+#siguiente comando en CMD o PowerShell
+
+choco composer install
+
+#Para poder verificar que se haya instalado correctamente, ponemos lo siguiente
+# composer -v
+
+composer -v
+</code>
+</pre>
+<!-- Fin Instalando Composer -->
+
+
+
+<!-- Instalando Laravel -->
+<li>Instalando Laravel</li>
+<pre>
+<code class="language-shell">
+#Para instalar el instalador de Laravel de forma global usamos la siguiente linea:
+#y esperamos un momento en lo que se termina de descargar e instalar.
+
+composer global require laravel/installer
+
+#Una vez que se haya instalado todo correctamente, te arrojara una url donde se habra
+#instalado, abrimos esa url en el explorador de archivos, abrimos la carpeta vendor/bin
+#y toda la url hasta vendor/bin, es la url que se agregara en al path de windows para que
+#este funcione correctamente
+
+#Para ver que Laravel se haya instalado correctamente, escribimos en PowerShell lo siguiente:
+
+laravel
+
+#Debera arrojarte la version del instalador de laravel, ejemplo:
+
+Laravel Installer 3.1.0
+
+#En ocasiones el instalar Laravel y empezar a usar, nos podra arrojar varios errores, los
+#mas comunes son, se solucionan, yendo a la carpeta donde se esta instalado PHP y en el archivo
+#php.ini, buscamos los siguientes comandos:
+
+# ;extension=curl
+# ;extension=gd2
+# ;extension=mysqli
+# ;extension=pdo_mysql
+
+#Solo quitamos de los comando anteriores el ";" y listo podra funcionar muy bien nuestro laravel
+</code>
+</pre>
+<!-- Fin Instalando Laravel -->
+
+
+
+<!-- Creando un Poryecto en Laravel -->
+<li>Creando un Proyecto en Laravel</li>
+<pre>
+<code class="language-shell">
+#Se recomienda ampliamente crear los proyectos de laravel en el escritorio, esto para
+#tener un mejor acceso al proyecto, para crear un uevo proyecto en laravel hacemos lo
+#siguiente, ejecutamos la siguiente linea en PowerShell
+
+#C:\Users\danhe\Desktop> Esta sera la direccion que una vez llegado a ella, 
+#ejecutamos lo siguiente
+
+composer create-project laravel/laravel=^7 recetaslaravel --prefer-dist
+
+#Esto nos creara nuestro proyecto de laravel
+
+#Ahora nos dirigimos a la carpeta recetaslaravel
+C:\Users\danhe\Desktop\recetaslaravel>
+
+#Si queremos ejecutar nuestro Proyecto y visualizarlo, usaremos el siguiente 
+#comando de Artisan.
+
+php artisan serve
+</code>
+</pre>
+<!-- Fin Creando un Poryecto en Laravel -->
+
+
+
+
+<!-- Artisan CLI -->
+<li>Artisan CLI</li>
+<pre>
+<code class="language-shell">
+
+#Artisan es el CLI de Laravel que nos permitirá ejecutar una variedad de comandos
+#Para un listado completo de todos los comandos, usar la siguiente linea:
+
+php artisan list
+
+
+#Se puede utilizar el comando "help" para una ayuda de como utilizar un comando
+#y que valores se pueden pasarle, ejemplo:
+
+php artisan help serve
+</code>
+</pre>
+<!-- Artisan CLI -->
+
+
+
+<!-- Crear Controladores con Artisan CLI -->
+<li>Crear Controladores con Artisan CLI</li>
+<pre>
+<code class="language-shell"> 
+#Con Artisan se pueden crear controladores solo usando la siguiente sintaxis:
+
+php artisan make:controller 
+
+#Despues de make:controller se debera poner el nombre que llevara el controlador, 
+#empezando con mayusculas, ejemplo:
+
+php artisan make:controller RecetasController
+</code>
+</pre>
+<!-- Crear Controladores con Artisan CLI -->
+
+
+
+<!-- Conectando a MySQL nuestro proyecto Laravel -->
+<li>Conectando a MySQL nuestro proyecto Laravel</li>
+<img src="img/carbon (6).png" style="width: 100%">
+<!-- Fin Conectando a MySQL nuestro proyecto Laravel -->
+
+
+
+<!-- Entendiendo Mejor nuestro proyecto -->
+<li>Entendiendo Mejor nuestro proyecto</li>
+<img src="img/carbon (4).png" style="width: 100%">
+<!-- Fin Entendiendo Mejor nuestro proyecto -->
+
+
+<!-- Routing y Controladores -->
+<li>Routing y Controladores</li>
+<img src="img/carbon (3).png" style="width: 100%">
+<!-- Routing y Controladores -->
+
+
+
+
+<!-- Laravel Invokable Controller -->
+<li>Laravel Invokable Controller</li>
+<pre>
+<code class="language-php"> 
+//Cuando se tiene una funcion con un solo metodo es recomendable usar __invoke 
+public function __invoke()
+{
+    return view('nosotros');
+}
+
+/* 
+Se puede hacer de una forma automatica esta funcion con artisan, en PowerShell
+introducimos el siguiente comando: (php artisan make:controller RecetaController -i) 
+y este comando nos generara autmaticamente la funcion __invoke
+*/
+</code>
+</pre>
+<!-- Laravel Invokable Controller -->
+
+
+
+<!-- Vista Recetas -->
+<li>Vista Recetas</li>
+<pre>
+<code class="language-php"> 
+/*
+Creamos una carpeta llamada recetas dentro de la carpeta views, ahi pondremos una vista
+llamada por convencion: index.blade.php
+*/
+
+public function __invoke()
+{
+    return view('recetas.index'); // Aqui Recetas es la carpeta, Index es el archivo.
+}
+</code>
+</pre>
+<!-- Vista Recetas -->
+
+
+
+<!-- pasar Informacion del controlador a la Vista Recetas -->
+<li>pasar Informacion del controlador a la Vista Recetas</li>
+<pre>
+<code class="language-php"> 
+/*
+Veamos como enviar informacion desde el controlador a la vista.
+*/
+
+public function __invoke()
+{
+    $recetas = ['Receta 1', 'Receta 2', 'Receta 3'];
+
+
+    return view('recetas.index')->with('recetas', $recetas); // Ésta es una manera de hacerlo.
+    return view('recetas.index', compact('recetas')); // Ésta es otra manera de hacerlo.
+}
+
+/*
+En la vista vamos a recibir la informacion a traves de la variable $recetas, ejemplo:
+*/
+
+@foreach ($recetas as $receta)
+
+    {{ $receta }}
+
+@endforeach
+
+// Esto mostrará en un listado las recetas que se declararon en el arreglo.
+</code>
+</pre>
+<!-- pasar Informacion del controlador a la Vista Recetas -->
+
+
+
+<!-- Login y Autenticacion -->
+<li>Login y Autenticacion</li>
+<pre>
+<code class="language-shell"> 
+#Laravel nos permite instalar desde composer una UI para Registro y Login de usuarios con su 
+#respectiva Autenticación veamoslo, para ello haremos uso del comando:
+
+composer require laravel/ui
+
+#Despues ejecutamos el comando 
+
+php artisan ui:auth
+
+#Y este comando nos generara en el menu de navegación, nuevos links, para este caso, tambien
+#se nos agregaron tanto nuevas vistas, como controladores y modelos, ademas de unas migraciones
+#que en este caso sera, como estara estructurada tu BD para la tabla de registro de Usuarios.
+
+#Ahora, los formularios tanto de registro como de login, vienen sin estilos, esto pasa
+#por que en Laravel te dan a elegir con que herramientas trabajar tus formularios, ya sea 
+#VUE o REACT, ademas de añadir estilos mediante Bootstrap.
+</code>
+</pre>
+<!-- Login y Autenticacion -->
+
+
+
+
+<!-- Ejecutar Migraciones -->
+<li>Ejecutar Migraciones</li>
+<pre>
+<code class="language-shell"> 
+#Las Migraciones en laravel son conocidas como el Control de Versiones de tu base de datos.
+#Esto te permite modificar o compartir tu Schema de tu BD en un equipo de trabajo.
+#Se puede ejecutar (Generar) la migracion al crear un modelo.
+
+#Para ejecutar una Migracion hacemos uso del siguiente codigo:
+
+php artisan make:model Clientes --m
+
+#Este codigo nos permite crear el modelo y al mismo tiempo ejecutar la migracion.
+#Si solo se desea ejecutar una migracion despues de ya tener un modelo, se usa el siguiente
+#comando
+
+php artisan migrate
+
+#Hay diferentes tipos de columnas en las migraciones
+
+#1.- bigIncrements - Ideal para pK
+#2.- char - Tipo Char
+#3.- float - Numeros Decimales
+#4.- integer - Numeros Enteros
+#5.- string - Tipo Varchar
+#6.- text - Tipo Text
+
+#El siguiente comando nos permite regresar a un estado anterior la BD
+
+php artisan migrate:rollback
+</code>
+</pre>
+<!-- Ejecutar Migraciones -->
+
+
+
+<!-- Añadir Bootstrap y VUE -->
+<li>Añadir Bootstrap y VUE</li>
+<pre>
+<code class="language-shell"> 
+#De todos los frameworks que hay para CSS, Bootstrap es el mas facil de instalar y de
+#usar y la forma de integrar Bootstrap es gracias al siguiente comando:
+
+php artisan ui bootstrap
+
+#Bootstrap solamente puede ser utilizado con Vue o React.
+
+#Para añadir Vue usaremos del siguiente comando:
+
+php artisan ui vue
+
+#Al añadir estos dos correactamente, al recargar nuestra pagina de registro o login
+#no se veran reflejados ningun cambio, ya que para que Bootstrap y Vue deben ser 
+#instaladas las dependencias, para ello haremos uso del siguiente comando:
+
+npm install
+
+#Una vez ejecutado el codigo anterior, debemos ejecutar el siguiente comando
+#para compliar las hojas de estilos y los archivos js
+
+npm run dev
+
+#Si alguna dependencia no se pudo instalar, ejecutamos el siguiente comando:
+
+npm audit fix --force
+
+#Para evitar tener que compilar el proyecto a cada momento, ejecutamos el siguiente
+#comando:
+
+npm run watch
+</code>
+</pre>
+<!-- Añadir Bootstrap y VUE -->
+
+
+
+<!-- Modificar Estilos -->
+<li>Modificar Estilos</li>
+<img src="img/carbon (7).png" style="width: 100%;">
+<!-- Modificar Estilos -->
+
+
+
+<!-- Añadir Usuarios a la BD -->
+<li>Añadir Usuarios a la BD</li>
+<img src="img/carbon (8).png" style="width: 100%;">
+<!-- Añadir Usuarios a la BD -->
+
+
+
+
+<!-- Añadir Campos Extras al Formulario -->
+<li>Añadir Campos Extras al Formulario</li>
+<pre>
+<code class="language-php"> 
+/*
+Primero abrimos de la carpeta Database/migrations el archivo create_users_table
+*/
+public function up()
+{
+    Schema::create('users', function (Blueprint $table) {
+        $table->id();
+        $table->string('name');
+        $table->string('email')->unique();
+        $table->timestamp('email_verified_at')->nullable();
+        $table->string('password');
+        $table->string('url')->nullable(); // Añadimos una columna mas.
+        // Con nullable() decimos que este campo puede ir vacio.
+        $table->rememberToken();
+        $table->timestamps();
+    });
+}
+
+/*
+Para añadir esa columna nueva a un campo del formulario registro, tendremos que 
+ir a ese archivo, a la vista register.blade.php y añadiremos el form-group para
+la url y su respectiva validacion.
+
+Con el uso de Blade, como se muestra en la imagen de abajo, antes del boton de registro.
+*/
+</code>
+</pre>
+
+<img src="img/carbon (9).png" style="width: 100%;">
+
+<pre>
+<code class="language-php"> 
+/*
+De esta manera al intentar registrar un usuario no se nos registrara la url, ya que laravel
+esta muy enfocado a la seguridad y solo añadir un campo cualquiera al formulario, seria
+muy inseguro.
+
+Para hacer que se inserte ese nuevo campo de url en la base de datos, vamos abrir el archivo
+(Modelo) User.php de la carpeta app y en fillable añadimos al final, el nuevo campo a agregar,
+ejemplo:
+*/
+
+protected $fillable = [
+    'name', 'email', 'password', 'url'
+];
+
+/*
+Para que se puedan mostrar las validaciones por defecto de laravel, al formulario de registro
+añadimos novalidate para evitar la validacion por html.
+
+Para añadir una validacion en el campo url, nos dirigimos a la carpeta app/Http/Controllers/Auth
+y abrimos el archivo RegisterController.php y en los 2 metodos que aparecen en el archivo
+añadimos el campo url y la validació que se requiere, ejemplo:
+*/
+
+protected function validator(array $data)
+{
+    return Validator::make($data, [
+        'name' => ['required', 'string', 'max:255'],
+        'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        'password' => ['required', 'string', 'min:8', 'confirmed'],
+        'url' => ['required', 'string', 'url'], // Aqui Creamos la Validacion
+        'lugar_nacimiento' => ['required', 'string'],
+    ]);
+}
+
+
+protected function create(array $data)
+{
+    return User::create([
+        'name' => $data['name'],
+        'email' => $data['email'],
+        'password' => Hash::make($data['password']), // El metodo Hash, Hashea nuestra pass
+        'url' => $data['url'] // Aqui mandamos a la BD la informacion del campo
+    ]);
+}
+</code>
+</pre>
+<!-- Añadir Campos Extras al Formulario -->
+
+
+
+
+<!-- Reedirecionar a otra pagina cuando te registras -->
+<li>Reedirecionar a otra pagina cuando te registras</li>
+<pre>
+<code class="language-php"> 
+/*
+En el archivo LoginController.php hay un viene un $redirectTo que toma una variable
+llamada HOME, damos clicsobre RouteServiceProvider para que nos abra este archivo 
+*/
+
+protected $redirectTo = RouteServiceProvider::HOME;
+
+/*
+Una vez que nos abra el archivo, vamos a modificar esta linea de codigo:
+*/
+
+public const HOME = '/home';
+
+/*
+Por la siguiente:
+*/
+
+public const HOME = '/recetas';
+
+/*
+La pagina de recetas para este entonces se mira muy mal, podemos heredar el diseño que 
+ya esta echo, para ello, abrimos la carpeta recetas, abrimos index.blade.php y añadimos 
+la siguiente linea hasta la parte de arriba del archivo.
+*/
+
+@extends('layouts.app') // Donde Layouts es la carpeta dentro de views y app es el archivo.
+
+/*
+Algo muy importante es mencionar los @yield, mencionamos esto, ya que al haber heredado 
+el diseño de app.blade.php, nuestra barra de navegacion se mostrara por debajo del 
+contenido, para que se herede de mejor manera nuestro template, en app.blade.php hay 
+un @yield hasta el final del archivo, con el nombre de content "@yield('content')", 
+en esta parte no moveremos nada, nos iremos de nueva cuenta a index.blade.php y despues del 
+@extends añadiremos @section('content'), donde 'content hace referencia al yield 
+de app.blade.php' ejemplo:
+*/
+
+@section('content')
+
+    // Contenido HTML que se vera reflejado en el yield de app.blade.php
+
+@endsection
+
+
+/*
+Nosotros podemos hacer nuestros propios @yields, ejemplo, en app.blade.php añadimos.
+*/
+
+@yield('Nombre que le queremos dar')
+
+// Y en el index.blade.php creamos la seccion con referencia a ese @yield, ejemplo:
+
+@section('Nombre que le dimos al @yield en app.blade.php')
+    
+    Contenido HTML
+
+@endsection
+</code>
+</pre>
+<!-- Reedirecionar a otra pagina cuando te registras -->
+
+
+
+<!-- Que son los Resources Controller -->
+<li>¿Que son los Resources Controller?</li>
+<pre>
+<code class="language-php"> 
+/* 
+AL principio mencionamos sobre esta funcion en Laravel donde podiamos llamar a un controlador
+y su metodo con '@' seguido del nombre del metodo.
+*/
+
+
+/*
+Aquí tenemos un listado de Resources Controller, el verbo que ese ejecutará, la url 
+a especificar, su accion y el nombre de la ruta, abajo de la tabla tenemos un ejemplo
+de un Resource Controller de tipo Get con accion Index. Esto lo podremos ver en la
+carpeta routes y el archvio web.php.
+
+Verb(Method)|   URI                      |   Action  |   Route Name
+-----------------------------------------------------------------------
+GET         |   /recetas                 |   Index   |   recetas.index
+GET         |   /recetas/create          |   create  |   recetas.create
+POST        |   /recetas                 |   store   |   recetas.store
+GET         |   /recetas/{photo}         |   show    |   recetas.show
+GET         |   /recetas/{photo}/edit    |   edit    |   recetas.edit
+PUT/PATCH   |   /recetas/{photo}         |   update  |   recetas.update
+DELETE      |   /recetas/{photo}         |   destroy |   recetas.destroy
+
+*/
+
+Route::get('/recetas', 'RecetasController@index');
+
+/*
+Si quisieramos añadir un formulario con registro en la BD hacemos lo siguiente:
+*/
+
+Route::get('/recetas/create', 'RecetasController@create'); 
+// De esta manera ejecutamos un metodo que nos servira para crear registros en la BD.
+
+/*
+En lugar de crear todos los metodos dentro del controlador manualmente, Laravel nos permite
+ejecutar un comando artisan que nos puede ayudar a crearlos de una manera mas facil,
+el siguiente comando artisan nos lo permite hacer:
+*/
+
+php artisan make:controller RecetasController -r
+
+// Una vez realizado esto, veamos los metodos que contruyo en el controlador RecetasController
+public function index()
+{
+    //
+}
+
+public function create()
+{
+    //
+}
+
+public function store(Request $request)
+{
+    //
+}
+
+public function show(Receta $receta)
+{
+    //
+}
+
+
+public function edit(Receta $receta)
+{
+    //
+}
+
+
+public function update(Request $request, Receta $receta)
+{
+    //
+}
+
+
+public function destroy(Receta $receta)
+{
+    //
+}
+</code>
+</pre>
+<!-- Que son los Resources Controller -->
+
+<!-- Como Crear una Migracion, modelo y controlador -->
+<li>¿Como Crear una Migracion, modelo y controlador?</li>
+<pre>
+<code class="language-php"> 
+/*
+Una migracion debe llevar un patron el cual es el siguiente:
+create_nombre-de-tu-migracion_table.php
+
+Puedes crear un amigracion facilmente con artisan, con el siguiente comando:
+*/
+
+php artisan make:migration create_recetas_table
+
+/* 
+Podemos ver nuestra migracion accediendo a la carpeta database/migrations y buscar
+nuestra migracion con el nombre que le dimos. Esto es lo que nos crea:
+*/
+
+class CreateRecetasTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('recetas', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('recetas'); 
+    }
+}
+
+/* 
+Recordemos que podemos ejecutar esa migracion y crear la tabla en la BD,
+lo hacemos con el siguiente comando:
+*/
+
+php artisan migrate
+
+
+/*
+Asi mismo hay una manera mas facil de poder crear el modelo, controlador y la migracion todo
+en uno y se hace con el siguiente comando:
+*/
+
+php artisan make:model Receta -mcr
+
+/*
+Debemos crear primero el modelo, el modelo siempre debera ir en singular y con la primera
+letra en mayuscula, seguido de -mcr donde 'm' es la migracion, 'c' el controlador y 
+'r' los Resource Controllers.
+
+Con esto nos ahorramos tiempo de desarrollo.
+*/
+
+
+</code>
+</pre>
+<!-- Como Crear una Migracion, modelo y controlador -->
+
+
+
+
+<!-- Trabajando con el metodo index -->
+<li>Trabajando con el metodo index</li>
+<pre>
+<code class="language-php"> 
+/*
+Con el metodo index podemos llamar a traer una vista, para ello dentro del metodo
+retornamos la funcion view(), y dentro ponemos la ruta de la vista a retornar.
+*/
+
+public function index()
+{
+    return view("recetas.index");
+}
+/*
+Dentro de la vista index, vamos a mostrar dentro de una tabla, las recetas que tengamos
+registradas, para poderlas mostrar.
+
+Por ahora solo tendremos una tabla con datos de relleno, dentro del @section('content')
+para que nuestra tabla se muestre correctamente dentro del @yield('content')
+*/
+</code>
+</pre>
+
+<img src="img/carbon (11).png" style="width: 100%;">
+
+<pre>
+<code class="language-php"> 
+/*
+En el codigo de la imagen de arriba donde mostramos la tabla, en la url del boton, viene
+lo siguiente {{ route("recetas.create") }}, para que el href de ese anchor funcione o en este
+caso traiga la url hacia donde queremos enviar ese boton, en el archivo web.php de la carpeta 
+routes a cada ruta le asignamos un alias o un nombre en especifico para poder despues llamar 
+esa url a traves de la funcion route(), el nombre de la ruta, entonces quedaria de la siguiente
+manera:
+*/
+
+Route::get('/recetas/create', RecetaController@create)->name('recetas.create');
+
+/*
+Asi mismo tanto al metodo al metodo create le retornamos la vista que vamos a mostrar y 
+al anchor mediante la funcion route(), mostramos la url del boton.
+*/
+
+public function create()
+{
+    return view("recetas.create");
+}
+
+// Para ello tambien deberemos crear en la carpeta recetas, un archivo llamado create.blade.php
+
+/* 
+De igual manera en el archivo create.blade.php añadimos un anchor con direccion a 
+index.blade.php por lo cual quedaria de la siguiente manera el anchor del archivo 
+create.blade.php {{ route("recetas.index") }}
+*/
+</code>
+</pre>
+<!-- Trabajando con el metodo index -->
+
+
+
+
+<!-- Registramos la ruta para almacenar las recetas -->
+<li>Registramos la ruta para almacenar las recetas</li>
+<pre>
+<code class="language-php"> 
+/*
+Tendremos que registrar una nueva ruta para la insercion de datos a la BD
+para ello vamos a la carpeta route y en el archivo web.php añadimos la 
+siguiente ruta:
+*/  
+
+Route::post('/recetas', 'RecetasController@store')->name('recetas.store');
+
+/*
+Recordemos que el metodo store pertenece a uno de los metodos de Resource Controllers,
+por consiguiente hacemos uso del metodo http post mas el metodo store para almacenar
+registros de formularios. 
+
+De igual manera no olvidar que en el formulario en el action añadimos la ruta del controlador
+como con los botones. {{ route("recetas.create") }}
+*/
+
+/*
+Ahora nos dirigimos al controlador RecetaController y buscamos el metodo store, una vez
+encontremos el metodo, vemos que tiene un request, ese request es lo que se envia a la funcion
+store.
+*/
+
+/* 
+Nota, Para poder enviar el formulario sin recibir un error del servidor, laravel genera 
+un token de seguridad para evitar que se registren desde otro lugar datos en nuestra BD.
+
+Este token se puede encontrar en al archivo app.blade.php como CSFR TOKEN en una etiqueta
+meta.
+
+Para que nuestro formulario no envie un error por no tener ese Token de autoricación, deberemos
+al mismo tiempo enviar ese token a traves del formulario en cuestion que en este caso, seria el
+que se encuentra en create.blade.php, recordemos que este archivo hereda todo lo de 
+app.blade.php entonces para pasar el token desde el formulario añadimos la siguiente 
+linea debajo de la etiqueta form de cualquiera de nuestros formularios.
+*/
+
+@csrf //Añadiendo esto dentro del formulario, enviamos de igual manera el token de autorizacion.
+
+
+// Nota, hay una funcion en laravel que funciona como un var_dump(), la cual es:
+dd();
+// Esta funcion tambien evita que se siga ejecutando el codigo debajo de el.
+
+/*
+Para verificar que nuestros datos se estan enviando correctamente, en el metodo store, añadimos
+lo siguiente.
+*/
+
+public function store(Request $request)
+{
+    dd($request->all()); 
+    /* A la variable request le asignamos la funcion all() para mostrar todo 
+    lo que se esta enviando desde nuestro formulario y gracias a la funcion dd()
+    nos mostrará en un arreglo, los datos que se estan enviando. */
+}
+</code>
+</pre>
+<!-- Registramos la ruta para almacenar las recetas -->
+
+
+
+
+<!-- Creando el formulario de Registro de Recetas -->
+<li>Creando el formulario de Registro de Recetas</li>
+
+<img src="img/carbon (12).png" style="width: 100%;">
+
+<pre>
+<code class="language-php"> 
+/*
+La siguiente linea, ira dentro de class de un input del formulario, esta linea
+lo que hace es validar que si viene con error ese campo, se añadira al class
+de forma dinamica la clase is-invalid, para ello el formulario debera contar con
+novalidate para que estos errores se puedan mostrar
+*/
+
+@error('titulo') is-invalid @enderror 
+
+/*
+En la siguiente linea, vamos a decir que si viene un error en la validacion de ese
+campo, nos mostrara un mensaje con dicho error. Este debera ponerse debajo del input
+o el campo para que se visualice por debajo el error y sea mas claro donde se muestra
+el error.
+*/
+
+@error('titulo')
+</code>
+<code class="language-markup">
+    &lt;span class="invalid-feedback d-block" role="alert">
+
+        &lt;strong>{{ $message }}&lt;/strong>
+
+    &lt;/span>
+
+@enderror
+</code>
+
+<code class="language-php">
+/*
+Para hacer funcionar la validación de Laravel
+*/
+</code>
+</pre>
+<!-- Creando el formulario de Registro de Recetas -->
+
+
+
+<!-- Urls Protegidas en Laravel -->
+<pre>
+<code class="language-php">
+/*
+Para proteger una url en Laravel usamos la siguiente linea de código dentro del controlador
+al que deseamos proteger, en este caso seria RecetasController.php
+*/
+
+public function __construct()
+{
+    $this->middleware('auth'); // Aqui activamos el middelware auth
+}
+</code>
+</pre>
+<!-- Urls Protegidas en Laravel -->
+
+
+<!-- Creando mas Campos Restantes para el formulario de registro de recetas -->
+<pre>
+<code class="language-php">
+// Vamos a añadir mas campos al formulario de registro de Recetas, para ello primero definimos en
+la migracion de recetas los campos que vamos a introducir, una vez que hayamos introduucido los nuevos
+campos en la migracion, en consola escribimos el comando php artisan migration:fresh -> lo que hara esto
+es eliminar las tablas correspondientes y las creara nuevamente.
+
+// Al mismo tiempo requerimos hacer la tabla de categorias_receta, esta tabla se hara por encima de la tabla
+recetas.
+
+// Tabla Categoria Recetas
+Schema::create('categoria_receta', function (Blueprint $table) {
+    $table->id();
+    $table->string('nombre');
+    $table->timestamps();
+});
+
+
+// Tabla Recetas
+Schema::create('recetas', function (Blueprint $table) {
+    $table->id();
+    $table->string('titulo_receta');
+    $table->text('ingredientes');
+    $table->text('preparacion');
+    $table->string('imagen');
+    $table->foreignId('user_id')->references('id')->on('users')->comment('El usuario que crea la receta');
+    $table->foreignId('categoria_id')->references('id')->on('categoria_receta')->comment('Categoría de la receta');
+    $table->timestamps();
+});
+
+// Recordemos poner dropIfExist a la nueva tabla que seria en este caso la de Categorias Recetas, para que los 
+comandos migrate de artisan funciones.
+public function down()
+{
+    Schema::dropIfExists('categoria_receta');
+    Schema::dropIfExists('recetas');
+}
+</code>
+</pre>
+<!-- Creando mas Campos Restantes para el formulario de registro de recetas -->
+
+
+<!-- Los Seed -->
+<pre>
+<code class="language-php">
+// Los Seed es una forma de llenar la base de datos con datos por default, esto nos ayuda a que al hacer un rollback o un fresh, estos datos no se eliminen de la base de datos y se queden guardados ahi, ya sea para hacer pruebas o tener ciertos datos almacenados para otras opciones.
+
+// Para ver como se crean los Seeders podemos ejecutar en consola el comando: 
+php artisan help make:seeder // Para que nos muestre las opciones de creacion de seeders.
+
+// Para crear un seeder usamos el comando:
+php artisan make:seeder CategoriasSeeder // El nombre de un seeder debe empezar en Mayusculas ya que sera una clase
+
+// Los seeders se almacenan en la misma carpeta de Database, justo debajo de migrations, ahi encontraremos nuestra Seed creada 
+
+// Dentro de la funcion run() debemos crear la misma estructura para insertar datos en una tabla de BD, haciendo uso de insert, añadimos dentro de este insert los campos que vendran por dafault(los que tenemos en la BD), pero sin el ID ya que este no sera requerido.
+
+public function run()
+{
+    DB::table('categoria_receta')->insert([
+        'nombre' => 'Comida Mexicana',
+        'created_at' => date('Y-m-d H:i:s'),
+        'updated_at' => date('Y-m-d H:i:s')
+    ]);
+
+    DB::table('categoria_receta')->insert([
+        'nombre' => 'Comida Italiana',
+        'created_at' => date('Y-m-d H:i:s'),
+        'updated_at' => date('Y-m-d H:i:s')
+    ]);
+
+    DB::table('categoria_receta')->insert([
+        'nombre' => 'Comida Argentina',
+        'created_at' => date('Y-m-d H:i:s'),
+        'updated_at' => date('Y-m-d H:i:s')
+    ]);
+
+    DB::table('categoria_receta')->insert([
+        'nombre' => 'Postres',
+        'created_at' => date('Y-m-d H:i:s'),
+        'updated_at' => date('Y-m-d H:i:s')
+    ]);
+    
+    DB::table('categoria_receta')->insert([
+        'nombre' => 'Cortes de Carne',
+        'created_at' => date('Y-m-d H:i:s'),
+        'updated_at' => date('Y-m-d H:i:s')
+    ]);
+
+    DB::table('categoria_receta')->insert([
+        'nombre' => 'Ensaladas',
+        'created_at' => date('Y-m-d H:i:s'),
+        'updated_at' => date('Y-m-d H:i:s')
+    ]);
+
+    DB::table('categoria_receta')->insert([
+        'nombre' => 'Desayuno',
+        'created_at' => date('Y-m-d H:i:s'),
+        'updated_at' => date('Y-m-d H:i:s')
+    ]);
+}
+
+// Y asi es como definimos campos por default para las categorias que se mostraran en el formulario de registro de recetas.
+
+// Por ultimo debemos decirle a Laravel que sea ha creado un seeder, entonces para esto debemos acceder al Seeder de DatabaseSeeder y la linea de codigo que esta dentro de la funcion run() la cual es esta $this->call(UsersTableSeeder::class);, estara comentada, por lo tanto la copiamos, pegamos en la parte posterior o inferior y en vez de llamar UsersTableSeeder, llamamos CategoriaSeeder, ejemplo:
+
+public function run()
+{
+    $this->call(CategoriaSeeder::class);
+    // $this->call(UsersTableSeeder::class);
+}
+
+// Ahora para correr un seed o ejecutar un seed usamos el siguiente comando:
+php artisan db:seed // Y esto creara el seed o seeder's correspondientes.
+</code>
+</pre>
+<!-- Los Seed -->
+
+<!-- Segundo Seed -->
+<pre>
+<code class="language-php">
+// Ahora vamos a crear un segundo Seeder pero ahora para los usuarios, es la misma instruccion para todos los Seeders:
+php artisan make:seeder UsuarioSeeder
+
+// Creamos los datos que se insertaran en la BD:
+public function run()
+{
+    DB::table('users')->insert([
+        'name' => 'Dan Hermes',
+        'email' => 'deroaxios@gmail.com',
+        'password' => Hash::make('12345678'),
+        'url' => 'http://www.google.com',
+        'created_at' => date('Y-m-d H:i:s'),
+        'updated_at' => date('Y-m-d H:i:s')
+    ]);
+
+    DB::table('users')->insert([
+        'name' => 'Genesis Jesus',
+        'email' => 'genesis@gmail.com',
+        'password' => Hash::make('12345678'),
+        'url' => 'http://www.google.com',
+        'created_at' => date('Y-m-d H:i:s'),
+        'updated_at' => date('Y-m-d H:i:s')
+    ]);
+
+}
+
+// Nuevamente vamos al archivo DatabaseSeeder y añadimos su llamado correspondiente, ya con los dos Seeder's quedaria asi nuestro DatabaseSeeder:
+public function run()
+{
+    $this->call(CategoriaSeeder::class);
+    $this->call(UsuarioSeeder::class);
+    // $this->call(UsersTableSeeder::class);
+}
+
+// Ahora por ultimo ejecutamos los seed usando el comando:
+php artisan db:seed // Y esto creara el seed o seeder's correspondientes.
+</code>
+</pre>
+<!-- Segundo Seed -->
+
+
+<!-- Enviando las categorias de la BD al Formulario -->
+<pre>
+<code class="language-php">
+// Para capturar las categorias de la BD vamos hacer uso del controlador RecetasController, para ello nos posicionamos dentro del metodo create, podemos hacer esta consult de dos maneras diferentes:
+
+DB::table('categoria_receta')->get()->dd();
+// De esta manera nos muestra un arreglo de lo que obtiene la consulta que hacemos, gracias a la funcion dd(), pero esto nos muestra o nos trae todas las columnas de la base de datos, para solo obtener los datos que desamos existe una funcion llamada pluck y para el ejemplo anterior, su cambio es muy minimo:
+
+DB::table('categoria_receta')->get()->pluck('nombre','id')->dd();
+// Asi es como añadimos la funcion pluck y le pasamos solo las columnas que deseamos traer.
+
+$categorias = DB::table('categoria_receta')->get()->pluck('nombre', 'id');
+// Esta es la siguiente forma, solo excluimos la funcion dd() para poder almacenar nuestra consulta en la variable $categorias, recordemos que la funcion dd() detiene la ejecucion del programa para mostrarte un resultado unico.
+
+ // Ahora la forma de poder pasar este resultado que se almacena en la variable, es mediante el return que anteriormente era:
+ return view("recetas.create");
+
+ // Ahora para pasar lo que traemos desde la variable $categorias es:
+ return view("recetas.create")->with('categorias', $categorias); // Recordemos que with() es una forma de enviar valores a la vista.
+
+ // Ahora nos vamos para la vista que seria create.blade.php, aqui vamos a poder imprimir lo que trae la variable $categorias, en cualquier parte del documento, recordemos que se usan llaves dobles para imprimir {{ $categorias }}, esto nos mostraría un array con los datos.
+
+ // Mostraremos en un select las categorias y en cada option su id de dicha categoria para al momento de almacenar este formulario en la BD lo almacenemos por su ID para despues mostrar mediante ese ID el valor o en este caso el nombre.
+
+<div class="form-group">
+
+    <label for="titulo">Categoria</label>
+
+    <select name="categoria" class="form-control @error('categoria') is-invalid @enderror" id="categoria"
+         required autocomplete="categoria" autofocus> <!-- Aqui creamos el select -->
+        <option value="">-- Seleccionar Categoría --</option> <!-- Definimos un option por defecto -->
+
+        @foreach ($categorias as $id => $categoria) <!-- Ahora si, para imprimir todas las categorias hacemos uso de un foreach de la variable $categorias donde le asignamos un alias y su valor equitativo -->
+
+            <option value="{{ $id }}"> 
+                <!-- Aqui en su respectivo value le pasamos el ID. -->
+                {{ $categoria }} <!-- Aqui mostramos el nombre de dicha categoria. -->
+                    
+            </option>
+
+        @endforeach
+
+    </select>
+
+    @error('categoria') <!-- Recordemos que esta funcion es para validar los formularios -->
+
+        <span class="invalid-feedback d-block" role="alert">
+
+            <strong>{{ $message }}</strong>
+
+        </span>
+
+    @enderror
+</div>
+
+</code>
+</pre>
+<!-- Enviando las categorias de la BD al Formulario -->
+
+
+
+<!-- Mantenerla seleccion de categoria en la validacion -->
+<pre>
+<code class="language-php">
+// Para mantener el mismo valor ya definido o claramente puesto en el select del formulario anterior, despues de enviar el mismo y la validacion nos regrese algun error y seguir manteniendo el valor elegido, hacemos un ligero cambio dentro del campo a añadir esa funcionalidad.
+
+// Pero no olvidemos que al añadir @error dentro del campo a validar, tenemos que añadir dicha validacion a la funcion validate del controlador RecetasController en el metodo store():
+
+$data = request()->validate([
+    'titulo' => 'required|min:6|string'
+    'categoria' => 'required' // Aqui es donde requerimos el campo  categorias a traves de su etiqueta name.
+]);
+
+// Una vez realizado esa validacion, prosegimos hacer que el formulario despues de dicha validacion siga manteniendo el valor seleccionado si este nos valida erroneo algun campo, para ello añadimos en el caso de un select, seria dentro de su option y añadimos la siguiente linea: 
+
+{{ old('categoria') == $id ? 'selected' : '' }} // Aqui le decimos que va a leer el valor previo si esa categoria es igual al id actual del option (?) añadele el atributo 'selected' (:) de lo contrario no le añadas nada '':
+
+<div class="form-group">
+
+    <label for="titulo">Categoria</label>
+
+    <select name="categoria" class="form-control @error('categoria') is-invalid @enderror" id="categoria"
+        required autocomplete="categoria" autofocus>
+        <option value="">-- Seleccionar Categoría --</option>
+
+        @foreach ($categorias as $id => $categoria)
+
+            <option value="{{ $id }}" {{ old('categoria') == $id ? 'selected' : '' }}> <!-- Aqui es donde añadimos la forma de mantener el valor -->
+                {{ $categoria }}
+            </option>
+
+        @endforeach
+
+    </select>
+
+    @error('categoria')
+
+        <span class="invalid-feedback d-block" role="alert">
+
+            <strong>{{ $message }}</strong>
+
+        </span>
+
+    @enderror
+</div>
+</code>
+</pre>
+<!-- Mantenerla seleccion de categoria en la validacion -->
+
+
+<!-- Añadiendo Trix Editor -->
+<pre>
+<code class="language-php">
+// En esta ocacion vamos a añadir un editor de texto llamado trix editor, esto para que podamos editar la seccion de la preparacion y los ingredientes de la receta que los usuarios van a poder subir.
+
+// Para poder hacer uso de trix editor podemos descargar los archivos de github pero es recomendable usar mejor la CDN: https://cdnjs.com/libraries/trix y elegir solo los estilos y los js del editor. Para evitar cargar en todas las paginas este CDN, ya habiamos hecho anteriormente un yield para los estilos y para los scripts dentro del archivo app.blade.php para que la pagina que tenga dentro un section con el nombre del yield, sea la unica pagina que carge esos estilos o scripts segun sea el caso. Para elegir el script o el link del cdn de cada uno presionamos sobre uno de los 3 botones que tiene el cdn que seria "</>" esto nos copiara el path completo para pegar.
+
+
+// Ahora crearemos un nuevo form-group y ahi veremos como implementar trix editor
+<div class="form-group">
+
+<label for="preparacion">Preparación</label>
+
+<input type="hidden" name="preparacion" class="form-control" id="preparacion" value="{{ old('preparacion') }}" required autocomplete="preparacion" autofocus> 
+// Aqui dentro del input recordemos tener la etiqueta value y pasarle old() para que se mantenga el valor escrito despues de la validacion y este se quede igual en caso de algun error, en diferencia con el select solo sera necesario hacer uso de 
+{{ old('preparacion') }} donde preparacion viene de la etiqueta name, de igual forma este input debera ser de tipo hidden ya que este hara referencia al editor trix y asi mismo creara mucho html.
+    
+<trix-editor input="preparacion" class="form-control @error('preparacion') is-invalid @enderror">
+</trix-editor> // Esta es la forma de añadir trix editor, creando la etiqueta html trix-editor pero pasanodole desde el id del input anterior la etiqueta input con el nombre de lo que sera o el valor que correspondera.
+
+
+// Si deseamos que nuestros trix-editors ya sea el de preparacion o el de ingredientes, vamos al archivo sass que previamente tenemos creado y le damos un alto minimo a la etiqueta trix-editor.
+
+<style>
+    trix-editor{
+        min-height: 400px;
+    }
+</style>
+
+@error('preparacion')
+
+    <span class="invalid-feedback d-block" role="alert">
+
+        <strong>{{ $message }}</strong>
+
+    </span>
+
+@enderror
+
+</div>
+
+
+// Por ultimo no olvidemos validar los dos trix-editor en el controlador RecetasController, recordemos actualizar la funcion validate dentro del metodo store().
+
+$data = request()->validate([
+    'titulo' => 'required|min:6|string',
+    'categoria' => 'required',
+    'ingredientes' => 'required',
+    'preparacion' => 'required'
+]);
+
+
+</code>
+</pre>
+<!-- Añadiendo Trix Editor -->
+
+
+
+
+<!-- Añadiendo Campo Imagen -->
+<pre>
+<code class="language-php">
+// Para añadir el campo para añadir una imagen, creamos un input de tipo file:
+<div class="form-group">
+
+<label for="imagen">Imagen</label>
+
+<input 
+        type="file" // Input de tipo file para carga de archivos
+        name="imagen" 
+        class="form-control @error('ingredientes') is-invalid @enderror" // Añadimos su validacion para que nos marque en rojo.
+        id="imagen"
+        value="{{ old('imagen') }}" // Mantenemos el nombre o en este caso el archivo en caso de error al mandar el formulario.
+        required 
+        autocomplete="imagen" 
+        autofocus
+>
+
+@error('imagen') // Mensaje de validacion
+
+    <span class="invalid-feedback d-block" role="alert">
+
+        <strong>{{ $message }}</strong>
+
+    </span>
+
+@enderror
+
+</div>
+
+// Por ultimo recordemos validar este campo en RecetasController, para ello solo añadimmos el nuevo campo a validar.
+$data = request()->validate([
+    'titulo' => 'required|min:6|string',
+    'categoria' => 'required',
+    'ingredientes' => 'required',
+    'preparacion' => 'required',
+    'imagen' => 'required|image' // Le decimos que es de tipo imagen para que no puedan subir otro tipo de archivo
+]);
+
+
+</code>
+</pre>
+<!-- Añadiendo Campo Imagen -->
+
+
+<!-- Agregando los campos a la bd excepto la imagen -->
+<pre>
+<code class="language-php">
+// Ahora para añadir los campos del formulario a la BD, tenemos que editar la funcion insert() que esta dentro del metodo store, ya actualmente tenemos añadido solamente el titulo, solo añadiremos los campos restantes que incluso vienen en la validacion, por el momento la imagen solo se enviara un texto relleno, ya que en la siguiente imagen mostraremos como almacenar en una carpeta dentro del servidor la imagen, pero en la BD, recogemos la ruta donde se encuentra la imagen para posteriormente mostrarla.
+
+// Los campos se pueden pasar en el orden que sea, no es necesario en un orden en especifico pero para tener un mejor control sobre de ello.
+
+// Recordemos que los valores a poner dentro de la funcion inert() vendran desde la variable $data que sera un arreglo, al cual accederemos a traves de los corchetes como en cualquier arreglo.
+
+// Validacion
+$data = request()->validate([
+    'titulo' => 'required|min:6|string',
+    'ingredientes' => 'required',
+    'preparacion' => 'required',
+    'imagen' => 'required|image',
+    'categoria' => 'required'
+]);
+
+
+// Insertar Datos a la BD
+DB::table('recetas')->insert([
+
+    'titulo_receta' => $data['titulo'], // Aqui traemos desde la variable $data, el titulo
+    'ingredientes' => $data['ingredientes'], // Aqui traemos desde la variable $data, el ingredientes
+    'preparacion' => $data['preparacion'], // Aqui traemos desde la variable $data, el preparacion
+    'imagen' => 'imagen.jpg', // Por el momento solo enviamos un nombre cualquiera, en la siguiente imagen veremos como meter la ruta de la imagen.
+    'user_id' => 1, // Por el momento mandaremos el user 1 para que no nos mande error al hacer una prueba, Para hacerlo dinamico, laravel tiene un helper llamado Auth, por lo que al hacerlo dinamico quedaria de la siguiente manera.
+    'user_id' => Auth::user()->id, // Recuerda importar Auth.
+    'categoria_id' => $data['categoria'] // Aqui traemos desde la variable $data, el categoria
+
+]);
+
+// Por ultimo probamos el formulario y listo.
+</code>
+</pre>
+<!-- Agregando los campos a la bd excepto la imagen -->
+
+
+<!-- Almacenar Imagenes en el Servidor  -->
+<pre>
+<code class="language-php">
+// Siempre debemos almacenar las imagenes el servidor, y en la BD solamente guardar la referencia o en este caso la ruta donde fue almacenada dicha imagen, veamos como hacerlo.
+
+// antes de hacer la validacion en RecetasController hagamos un dd() para ver que es lo que nos envia el formulario, al enviar el formulario nos regresara un arreglo con todos los campos y el que es correspondiente a la imagen, nos traera el nombre de la imagen.
+
+dd($request->all()); // Recordemos que $request es lo que nos trae el metodo store, ademas de que hay que recordar que dd() detiene la ejecucion de codigo al pasar por ahi.
+
+// Como lo anterior es un arreglo lo que podemos hacer es acceder a ese arreglo:
+dd($request['imagen']); // Esto solo nos mostrara el nombre de la imagen.
+
+// Para almacenar esa imagen dentro del servidor usamos lo siguiente:
+dd($request['imagen']->store('upload-recetas', 'public')); // Usamos la funcion store() para almacenar en una carpeta llamada upload-recetas las imagenes que subamos, donde dice public, sera la parte que eligamos como carpeta principal, ejemplo si tenemos aws, en vez de public iria aws.
+
+// Al ejecutar todo nos mandara un error, esto es por que a al formulario le debemos de agregar el enctype, donde quedaria como enctype="multipart/form-data", Esto para que funcione.
+<form action="{{ route('recetas.store') }}" method="post" novalidate enctype="multipart/form-data">
+</form>
+
+// Nuevamente al ejecutar, nos mostrara el nombre de la carpeta upload-recetas y un nuevo nombre generado por la funcion store(), y si revisamos nuestra carpeta storage/app/public ahi se nos mostrará la carpeta que se crea al ejecutar la funcion store().
+
+// La url que nos muestra que seria upload-recetas/nuevonombre.jpg al poner esto en la url, pensaremos que nos mostrara la imagen pero no es asi ya que como esta dentro de la carpeta storage, esta es interna y evita que se nos muestre algo, para evitar que eso pase, vamos hacer con php artisan lo siguiente para que se nos muestre la imagen.
+php artisan storage:link
+
+// Esto nos creara una URL simbolica asi le llama laravel.
+
+// Ahora vamos a almacenar la ruta de donde se almacena la imagen, lo haremos de la siguiente manera.
+$ruta_imagen = $request['imagen']->store('upload-recetas', 'public'); // Esta linea la ponemos debajo de la validacion.
+
+// Y en la funcion insert() donde recogemos la imagen le quitamos el nombre de relleno, por la variable $ruta_imagen, ejemplo.
+
+ // Validacion
+$data = request()->validate([
+    'titulo' => 'required|min:6|string',
+    'ingredientes' => 'required',
+    'preparacion' => 'required',
+    'imagen' => 'required|image',
+    'categoria' => 'required'
+]);
+
+// Obtener Ruta de la Imagen
+$ruta_imagen = $request['imagen']->store('upload-recetas', 'public');
+
+// Insertar Datos a la BD
+DB::table('recetas')->insert([
+
+    'titulo_receta' => $data['titulo'],
+    'ingredientes' => $data['ingredientes'],
+    'preparacion' => $data['preparacion'],
+    'imagen' => $ruta_imagen,
+    'user_id' => Auth::user()->id,
+    'categoria_id' => $data['categoria']
+
+]);
+</code>
+</pre>
+<!-- Almacenar Imagenes en el Servidor  -->
+
+
+
+<!-- Cambiar de tamaño las imagenes con Intervention Image  -->
+<pre>
+<code class="language-php">
+// Haremos uso de Intervention Image para agregar un recorte en las imagenes antes de subir al servidor, asi mismo se pueden añadir diferentes efectos, url a Intervention Image: http://image.intervention.io/.
+
+// Para instalar Intervention Image necesitamos instalar con composer primero esta herramienta:
+composer require intervention/image // Una vez ejecutado, esperamos hasta que se instale el paquete.
+
+
+// Vamos a crear una variable donde almacenaremos el nuevo tamaño de la imagen.
+$img = Image::make( public_path("storage/{$ruta_imagen}") )->fit(1000, 550); // Image::make() viene del paquete de Intervention Image, recordemos importar Image para que esta linea pueda funcionar.
+
+
+$img->save(); // Con save() guardamos el nuevo tamaño de la imagen.
+
+// Con esto tenemos suficiente para poder cambiar de tamaño las imagenes, en la funcio fit() definimos el tamaño nuevo para la imagen y por ultimo, al momento de insertar todos los campos, en la funcion insert(), imagen => $ruta_imagen, seguira siendo lo mismo, no cambia por $img ni nada, se queda tal cual, con $img solo se hace el cambio de tamaño.
+
+// Hasta aqui hemos visto como almacenar datos con DB, que es una forma de almacenar datos en una BD sin un modelo, en las siguientes iamgenes veremos como funciona el ORM de Laravel (Eloquent) y veremos una nueva forma de almacenar datos con modelos.
+</code>
+</pre>
+<!-- Cambiar de tamaño las imagenes con Intervention Image  -->
+
+
+<!-- ¿Que es un ORM? y Eloquent el ORM de Laravel  -->
+<pre>
+<code class="language-php">
+// Un ORM nos permite conectar los objetos de una aplicacion con las tablas en una base de datos, gracias a un ORM es mas facil realizar las operaciones en la Base de Datos en lugar de escribir SQL, en el caso de Laravel, su ORM se llama Eloquent.
+
+// El ORM usualmente funciona sombre la M del MVC, cada tabla en tu Base de Datos debera tener un Modelo asociado a ella.
+
+// Recordemos que anteriormente para crear un Modelo con Artisan usamos el siguiente comando: php artisan make:model Usuarios, recordemos que el nombre del modelo debera siempre ir en mayusculas ya que es una clase.
+
+// Ten en cuenta que si el modelo se llama Usuarios, Laravel va a generaral tabla usuarios (Aunque se puede reenombrar), pero se recomienda usar el nombre por defecto.
+
+// El ORM funciona sobre el Modelo, este siempre esta conectado a la BD y el ORM se encarga de la relacion entre diferentes Modelos, para el ORM de Laravel ya contamos con una serie de funciones para definir las relaciones entre tablas, esas funciones son 6 con exactitud y son las siguientes:
+
+// Relacion 1:1 -> hasOne
+// Relacion 1:n -> hasMany
+// Relacion n:n -> belongsToMany
+
+// Relacion 1:1 -> belongsTo
+// Relacion 1:n -> belongsTo
+// Relacion n:n -> belongsToMany
+
+// Estaremos viendo en las siguientes imagenes, como funciona Eloquent, el ORM de Laravel.
+
+</code>
+</pre>
+<!-- ¿Que es un ORM? y Eloquent el ORM de Laravel  -->
+
+
+
+
+<!-- Creando una relación 1n entre Usuarios y Recetas  -->
+<pre>
+<code class="language-php">
+// Cada usuario puede crear muchas recetas, por lo tanto sera una relacion de 1->usuario, n->recetas, esas relaciones se definen en los modelos, los Modelos se encuentran dentro de la carpeta app, fuera de toda carpeta.
+
+// Por el momento tenemos 2 modelos, 1 de Usuarios y 1 de Recetas, vamos a trabajar con el Modelo Usuarios:
+
+// Realacion 1:n de usuarios a recetas
+public function recetas()
+{
+    return $this->hasMany(Receta::class); // Retornamos la misma funcion, le pasamos hasMany y le decimos que tendra la relacion con la clase Receta.
+}
+
+// Esta funcion la ponemos dentro de la clase User
+
+// Para ver que haya funcionado bien, podemos interactuar con nuestra base de datos con el comando php artisan tinker, al momento de dar enter, podremos usar tinker y haremos lo siguiente:
+
+$usuario = User::find(1); // Definimos en una variable que nos haga una busqueda dentro de la funcion User, haciendo busqueda del user 1
+
+// Esto es lo que nos mostrara la consola
+App\User {#4137
+ id: 1,
+ name: "Dan Hermes",
+ email: "deroaxios@gmail.com",
+ email_verified_at: null,
+ url: "http://www.google.com",
+ created_at: "2021-02-28 21:49:53",
+ updated_at: "2021-02-28 21:49:53",
+}
+
+
+// Despues ejecutamos la relacion con recetas $usuario->recetas y nos mostrara todas las recetas que ese usuario haya realizado.
+Illuminate\Database\Eloquent\Collection {#4226
+ all: [
+   App\Receta {#4281
+     id: 1,
+     titulo_receta: "Facebook",
+     ingredientes: "<div>2</div>",
+     preparacion: "<div>1</div>",
+     imagen: "upload-recetas/IHYMH6iLp8iFNeuASKsATMceDL6T6xDQJD5vY7ya.jpg",
+     user_id: 1,
+     categoria_id: 1,
+     created_at: null,
+     updated_at: null,
+   },
+   App\Receta {#4282
+     id: 2,
+     titulo_receta: "Producto de prueba 3",
+     ingredientes: "<div>2</div>",
+     preparacion: "<div>1</div>",
+     imagen: "upload-recetas/JfSW7cyE76Ut5WgalnNFcrMmLEjRK64cFd4zdbNi.jpg",
+     user_id: 1,
+     categoria_id: 1,
+     created_at: null,
+     updated_at: null,
+   },
+   App\Receta {#4283
+     id: 3,
+     titulo_receta: "Producto de prueba 3",
+     ingredientes: "<div>2</div>",
+     preparacion: "<div>1</div>",
+     imagen: "upload-recetas/swhwy2yDRM1pymcF3GrGH6mTLekUHRgbsru0Mwfw.png",
+     user_id: 1,
+     categoria_id: 3,
+     created_at: null,
+     updated_at: null,
+   },
+   App\Receta {#4284
+     id: 4,
+     titulo_receta: "Pizza Domestika",
+     ingredientes: "<div>2</div>",
+     preparacion: "<div>1</div>",
+     imagen: "upload-recetas/B5FhTgwUis7nntCUjOSV6FHKYqHZ2tQK1TxZg2PR.png",
+     user_id: 1,
+     categoria_id: 4,
+     created_at: null,
+     updated_at: null,
+   },
+ ],
+}
+
+// Y listo ya podemos ver que tenemos la relacion de Usuarios hacia sus Recetas.
+
+// En la siguiente imagen veremos como mostrar las recetas de cada usuario en la tabla.
+</code>
+</pre>
+<!-- Creando una relación 1n entre Usuarios y Recetas  -->
+
+
+
+
+
+<!-- Obtener las Recetas creadas por un usuario con Eloquent  -->
+<pre>
+<code class="language-php">
+// Vamos a trabajar con el metodo index() de RecetasController, cuando añadimos una nueva receta en la parte del registro del usuario, añadimos Auth::user()->id para hacer la relacion entre Usuarios y las Recetas, podemos usar esta funcion dentro del metodo index() para mostrar las recetas en la vista, de cada usuario pero en vez de utilizar id, vamos a utilizar recetas ya que este seria la relacion con el usuario y el nombre del metodo.
+
+Auth::user()->recetas->dd(); // Le ponemos la funcion dd() para dejar de ejecutar el codigo y nos muestre un resultado.
+
+// Una nueva forma de poder ver lo que trae dd() es con Debugbar de Laravel, para su instalacion usaremos el siguiente comando:
+composer require barryvdh/laravel-debugbar
+
+// Despues en el archivo app.php que esta dentro de la carpeta config, buscaremos 'providers' => [] y hasta abajo añadimos lo siguiente   (Barryvdh\Debugbar\ServiceProvider::class,), despues buscamos 'aliases' => [] y hasta abajo ponemos lo siguiente ('Debugbar' => Barryvdh\Debugbar\Facade::class,), una vez que tengamos esto y queramos hacer uso de la barra de debug, ponemos "use Debugbar;" donde queramos hacer uso de esta misma, en este caso en el controlador RecetasController lo usaremos, para mostrar un debug por ejemplo de Auth guardamos Auth::user()->recetas dentro de una variable, y para mostrar el resultado ponemos Debugbar::info($recetas); y este nos mostrara un resultado igual que el dd() pero con mucha mayor informacion y sin detener la ejecucion del codigo.
+
+// Una forma diferente de mostrar Auth::user()->recetas es la siguiente:
+
+auth()->user()->recetas; // Con una funcion llamada auth().
+
+Ahora para mostrar o mandar lo que la variable $recetas al que le almacenamos Auth::user()->recetas; lo mandamos a la vista, para ello modificamos el return view de ese metodo index() de la siguiente manera:
+
+return view("recetas.index")->with('recetas', $recetas); // Recordemos que ocn with(), enviamos a la vista la informacion almacenada en una variable
+
+// Ahora en el formulario creamos un foreach de la variable recetas y mostramos cada una de las recetas almacenadas para ese usuario.
+<table class="table">
+
+    <thead class="bg-primary text-light">
+
+        <tr>
+            <th scole="col">Titulo</th>
+            <th scole="col">Categoría</th>
+            <th scole="col">Acciones</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+        @foreach ($recetas as $receta)
+        <tr>
+
+            <td>{{ $receta->titulo_receta }}</td>
+            <td>{{ $receta->categoria_id }}</td>
+            <td>
+                <a href="#" class="btn btn-danger"> Eliminar </a>
+                <a href="#" class="btn btn-dark"> Editar </a>
+                <a href="#" class="btn btn-success"> Ver </a>
+            </td>
+
+        </tr>
+
+        @endforeach
+
+    </tbody>
+
+</table>
+
+</code>
+</pre>
+<!-- Obtener las Recetas creadas por un usuario con Eloquent  -->
+
+
+<!-- Creando un Modelo para las Categorías  -->
+<pre>
+<code class="language-php">
+// Debemos resolver un pequeño problema ya que al nosotros crear la migracion y los seeders, pusimos categoria_receta, todo lo que encontremos con categoria_recetas, debemos de ponerlo en plural, categoria_recetas, para poder trabajar con mejor flujo.
+
+// Una vez que hayamos echo esos cambios no olvidemos dar un php artisan migrate:fresh y despues un php artisan db:seed para volver a rellenar las tablas con seeds, las demas tablas como la de recetas añadiremos unas a mano.
+
+// Si recordamos dentro de RecetasController dentro del metodo create() tenemos una consulta hacia la tabla categpria_recetas, no olvidemos que ya cambio, ahora esta en plural. 
+
+// Por el momento vamos a crear un modelo para las Categorias Recetas, recordemos que para crear un modelo hacemos uso del comando php artisan make:model CategoriaReceta. // Recordemos que debe ir en mayusculas el nombre del modelo ya que es una clase.
+
+// Ahora veamos como consultar la informacion desde el modelo de una forma diferente a como ya la estamos consultando:
+
+// Obtenerlas categorias (Sin Modelo) 
+// $categorias = DB::table('categoria_recetas')->get()->pluck('nombre', 'id');
+
+// Con Modelo
+$categorias = CategoriaReceta::all(['id', 'nombre']); /
+/ Aqui llamamos a la funcion CategoriaReceta y le pedimos que nos muestre todo, pero nos mostrara todo unicamente si no le ponemos nada dentro de los parentesis, una vez que nosotros pongamos algo dentro los parentesis, sera para definir que campos son los unicos que queremos traer, en ese caso el id y el nombre como ya lo habiamos hecho con pluck().
+
+// Ahora en nuestro create.blade.php necesitaremos cambiar un poco el foreach con el que ya contamos ya que la forma en la que estamos enviando la informacion es totalmente diferente, veamos los cambios:
+
+
+// Asi es como actualmente tenemos nuestro select
+<select name="categoria" class="form-control @error('categoria') is-invalid @enderror" id="categoria" required autocomplete="categoria" autofocus>
+    <option value="">-- Seleccionar Categoría --</option>
+
+    @foreach ($categorias as $id => $categoria)
+
+        <option value="{{ $id }}" {{ old('categoria') == $id ? 'selected' : '' }}>
+            {{ $categoria }}</option>
+
+    @endforeach
+
+</select>
+
+
+// Esta sera la nueva forma de mostrar en el foreach la variable $categorias.
+<select name="categoria" class="form-control @error('categoria') is-invalid @enderror" id="categoria" required autocomplete="categoria" autofocus>
+    <option value="">-- Seleccionar Categoría --</option>
+
+    // Como cada categoria ahora es un objeto omitimos el => por lo que solo añadimos el alias. 
+    @foreach ($categorias as $categoria)
+
+        <option value="{{ $categoria->id }}" {{ old('categoria') == $categoria->id ? 'selected' : '' }}>
+            {{ $categoria->nombre }}
+            // Atui tanto en el value como en la opcion, ya no seria $id o $categoria, ahora sera $categoria->("y aqui el nombre de alguno de los campos") ejemplo $categoria->nombre
+        </option>
+
+    @endforeach
+
+</select>
+</code>
+</pre>
+<!-- Creando un Modelo para las Categorías  -->
+
+
+
+
+<!-- Creando una relación 11 entre recetas y categorías  -->
+<pre>
+<code class="language-php">
+// Ahora el siguiente paso es decirle a Laravel de donde viene el id de la categoria de cada receta que se almacene o pedir mas informacion sobre el, para ello abrimos el modelo Receta, donde crearemos un metodo llamado categoria()
+
+// Obtiene la categoria de la receta via FK
+public function categoria()
+{
+    return $this->belongsTo(CategoriaReceta::class); // belongsTo -> nos trae del hijo al padre su relacion.
+                                                    // Si su relacion fuera hasOne no tendria sentido ya que seria del padre al hijo.
+}
+
+// Cuando hayamos ralizado esto el index.blade.php dentro del foreach cambiaremos solo la parte donde mostramos el id de la categoria:
+
+// Anteriormente el foreach estaba de esta manera, donde mostramos el titulo de la receta y el id de la categoria:
+@foreach ($recetas as $receta)
+<tr>
+
+    <td>{{ $receta->titulo_receta }}</td>
+    <td>{{ $receta->categoria_id }}</td>
+    <td>
+        <a href="#" class="btn btn-danger"> Eliminar </a>
+        <a href="#" class="btn btn-dark"> Editar </a>
+        <a href="#" class="btn btn-success"> Ver </a>
+    </td>
+
+</tr>
+
+@endforeach
+
+
+// Esta forma siguiente es como quedaria para mostrar el nombre de la categoria, donde a categoria_id le quitamos esa parte de _id ya que con el metodo categoria() que creamos dentro del modelo Receta, el solo poner categoria, nos trae todo un objeto con la informacion de categoria, por eso queda $receta->categoria, donde categoria es el metodo categoria() del modelo Receta, pero para acceder al valor del nombre a $receta->categoria solo asignamos el objeto nombre al final y listo, eso solo nos traera el nombre de la categoria, por consiguiente el codigo final es el siguiente:
+
+@foreach ($recetas as $receta)
+<tr>
+
+    <td>{{ $receta->titulo_receta }}</td>
+    <td>{{ $receta->categoria->nombre }}</td>
+    <td>
+        <a href="#" class="btn btn-danger"> Eliminar </a>
+        <a href="#" class="btn btn-dark"> Editar </a>
+        <a href="#" class="btn btn-success"> Ver </a>
+    </td>
+
+</tr>
+
+@endforeach
+</code>
+</pre>
+<!-- Creando una relación 11 entre recetas y categorías  -->
+
+
+
+<!-- Guardando Recetas con Modelo  -->
+<pre>
+<code class="language-php">
+// Para guardar las recetas actualmente hacemos uso de la funcion DB, ahora con los modelos lo haremos de una manera similar, poco diferente, por ahora, solo comentamos toda la funcion DB.
+
+// 
+</code>
+</pre>
+<!-- Guardando Recetas con Modelo  -->
+
+    <script src="prism.js"></script>
+
+</body>
+
+</html>
+
