@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1-0">
+  <meta charset="utf-8">
+  <title>Generador de Contraseñas - GräyZoom</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="iconos/css/all.min.css">
+</head>
+
+<body>
+  <div class="contenedor">
+    <div class="logo">
+      <!--<img style="width:50%;" src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c529.png" alt="">-->
+      <h1 class="logo2">Dero Studios</h1>
+    </div>
+    <div class="">
+      <p style="text-align: center;padding-bottom: 40px;">PASSWORD GENERATOR</p>
+    </div>
+    <form class="app" action="#" id="app" method="post">
+      <div class="fila numero-caracteres">
+        <div class="col">
+          <label for="numero-caracteres">Número de Caracteres:</label>
+        </div>
+        <div class="col botones">
+          <div>
+            <button type="button" class="btn" id="btn-menos-uno" name="button"><i class="fas fa-minus"></i></button>
+          </div>
+          <div>
+            <input type="text" id="numero-caracteres" readonly value="12">
+          </div>
+          <div>
+            <button type="button" class="btn" id="btn-mas-uno" name="button"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="fila simbolos">
+        <div class="col">
+          <label for="simbolos">¿Incluir Símbolos?</label>
+        </div>
+        <div class="col">
+          <button type="button" class="btn" id="btn-simbolos" name="button"><i class="fas fa-check"></i></button>
+        </div>
+      </div>
+
+      <div class="fila numeros">
+        <div class="col">
+          <label for="numeros">¿Incluir Números?</label>
+        </div>
+        <div class="col">
+          <button type="button" class="btn" id="btn-numeros" name="button"><i class="fas fa-check"></i></button>
+        </div>
+      </div>
+
+      <div class="fila mayusculas">
+        <div class="col">
+          <label for="mayusculas">¿Incluir Mayúsculas?</label>
+        </div>
+        <div class="col">
+          <button type="button" class="btn" id="btn-mayusculas" name="button"><i class="fas fa-check"></i></button>
+        </div>
+      </div>
+
+      <div class="fila generar">
+        <div class="col">
+          <button type="button" class="btn btn-generar" id="btn-generar" name="button">Generar <i class="fas fa-lock"></i></button>
+        </div>
+        <div class="col">
+          <input type="text" class="input-password" id="input-password" readonly name="" value="">
+        </div>
+      </div>
+
+      <div class="fila alerta">
+        <div class="col">
+          <div class="alerta-copiado" id="alerta-copiado">
+            <p><i class="fas fa-copy"></i> Texto Copiado</p>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div class="creador">
+      <p class="centro">Creado por Dan Hermes Reyes Osnaya para <a class="link" href="https://www.facebook.com/grayzoomstudio/">Dero Studio</a></p>
+    </div>
+
+  </div>
+
+
+
+
+  <script src="js/app.js"></script>
+</body>
+
+</html>
